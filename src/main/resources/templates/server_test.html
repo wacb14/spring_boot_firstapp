@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Server loading...</title>
+    <title th:text="${Title}">Server loading...</title>
   </head>
   <body>
-    <h1>Server's online!!</h1>
+    <h1 th:text="${Content}"></h1>
+    <h2 th:text="${IP}"></h2>
   </body>
 </html>
