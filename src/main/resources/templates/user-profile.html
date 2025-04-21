@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+  </head>
+  <body>
+    <h1>User profile</h1>
+    <ul>
+      <li><b>User: </b><span th:text="${user.user}"></span></li>
+      <li>
+        <b>Password: </b
+        ><span th:text="${user.password!=null?user.password:'Not set'}"></span>
+      </li>
+      <li>
+        <b>Status: </b><span th:if="${user.password!=null}">User complete</span
+        ><span th:unless="${user.password!=null}">User incomplete</span>
+      </li>
+    </ul>
+  </body>
+</html>
