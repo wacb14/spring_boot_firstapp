@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List of employees</title>
+  </head>
+  <body>
+    <table style="border: solid black 1px; border-collapse: collapse; text-align: center;">
+      <thead>
+        <th style="border: solid black 1px; border-collapse: collapse;">ID</th>
+        <th style="border: solid black 1px; border-collapse: collapse;">NAME</th>
+        <th style="border: solid black 1px; border-collapse: collapse;">ADDRESS</th>
+        <th style="border: solid black 1px; border-collapse: collapse;">AGE</th>
+      </thead>
+      <tbody>
+        <tr th:each="Employee:${Employees}">
+          <td style="border: solid black 1px; border-collapse: collapse;" th:text="${Employee.id}"></td>
+          <td style="border: solid black 1px; border-collapse: collapse;" th:text="${Employee.name}"></td>
+          <td style="border: solid black 1px; border-collapse: collapse;" th:text="${Employee.address}"></td>
+          <td style="border: solid black 1px; border-collapse: collapse;" th:text="${Employee.age}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
