@@ -1,6 +1,6 @@
 package com.wacb14.spring.firstapp.spring_boot_firstapp.models;
 
-public class Product {
+public class Product implements Cloneable {
     Long id;
     String name;
     double price;
@@ -33,6 +33,15 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new Product(id, name, price);
+        }
     }
 
 }

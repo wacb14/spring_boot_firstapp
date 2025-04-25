@@ -13,7 +13,8 @@ public class Product_Service {
         return products.getAll().stream()
                 .map(p -> {
                     double newPrice = p.getPrice() * 1.50;
-                    Product newProduct = new Product(p.getId(), p.getName(), newPrice);
+                    Product newProduct = (Product) p.clone();
+                    newProduct.setPrice(newPrice);
                     return newProduct;
                 })
                 .collect(Collectors.toList());
