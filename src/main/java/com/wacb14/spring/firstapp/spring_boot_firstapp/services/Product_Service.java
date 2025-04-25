@@ -12,8 +12,9 @@ public class Product_Service {
     public List<Product> getAll() {
         return products.getAll().stream()
                 .map(p -> {
-                    p.setPrice(p.getPrice() * 1.50);
-                    return p;
+                    double newPrice = p.getPrice() * 1.50;
+                    Product newProduct = new Product(p.getId(), p.getName(), newPrice);
+                    return newProduct;
                 })
                 .collect(Collectors.toList());
     }
