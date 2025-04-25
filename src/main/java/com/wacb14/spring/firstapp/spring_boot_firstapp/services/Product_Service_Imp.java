@@ -2,12 +2,15 @@ package com.wacb14.spring.firstapp.spring_boot_firstapp.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import com.wacb14.spring.firstapp.spring_boot_firstapp.models.Product;
-import com.wacb14.spring.firstapp.spring_boot_firstapp.repositories.Repo_Product_Imp;
+import com.wacb14.spring.firstapp.spring_boot_firstapp.repositories.Repo_Product;
 
+@Component
 public class Product_Service_Imp implements Product_Service{
-    private Repo_Product_Imp products = new Repo_Product_Imp();
+    @Autowired
+    private Repo_Product products;
 
     public List<Product> getAll() {
         return products.getAll().stream()
