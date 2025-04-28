@@ -2,10 +2,10 @@ package com.wacb14.spring.firstapp.spring_boot_firstapp.repositories;
 
 import java.util.Arrays;
 import java.util.List;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import com.wacb14.spring.firstapp.spring_boot_firstapp.models.Product;
 
-@Component
+@Repository
 public class Repo_Product_Imp implements Repo_Product {
     List<Product> data;
 
