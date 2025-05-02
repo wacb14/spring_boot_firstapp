@@ -8,13 +8,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.wacb14.spring.firstapp.spring_boot_firstapp.entities.Person;
-import com.wacb14.spring.firstapp.spring_boot_firstapp.repositories.RepoPerson;
+import com.wacb14.spring.firstapp.spring_boot_firstapp.repositories.PersonRepo;
 
 @SpringBootApplication
 public class SpringBootFirstappApplication implements CommandLineRunner {
 
 	@Autowired
-	private RepoPerson repoPeople;
+	private PersonRepo peopleRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootFirstappApplication.class, args);
@@ -22,7 +22,7 @@ public class SpringBootFirstappApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		List<Person> people = (List<Person>) repoPeople.findAll();
+		List<Person> people = (List<Person>) peopleRepo.findAll();
 		people.stream().forEach(person -> System.out.println(person));
 	}
 
