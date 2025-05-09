@@ -2,7 +2,6 @@ package com.wacb14.spring.firstapp.spring_boot_firstapp.DTO;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import com.wacb14.spring.firstapp.spring_boot_firstapp.models.Author;
 import com.wacb14.spring.firstapp.spring_boot_firstapp.models.Book;
 
 import lombok.Data;
