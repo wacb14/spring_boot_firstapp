@@ -14,7 +14,7 @@ public class BookDTO {
     private Integer id;
     private String title, editorial, genre;
     private BigDecimal price;
-    private LocalDate dataEdition;
+    private LocalDate dateEdition;
     private AuthorDTO authorDTO;
 
     public BookDTO(Book book) {
@@ -23,7 +23,7 @@ public class BookDTO {
         this.editorial = book.getEditorial();
         this.genre = book.getGenre();
         this.price = book.getPrice();
-        this.dataEdition = book.getDataEdition();
+        this.dateEdition = book.getDateEdition();
         this.authorDTO = new AuthorDTO(book.getAuthor());
     }
 

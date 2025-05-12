@@ -20,7 +20,7 @@ public class Book {
     private Integer id;
     private String title, editorial, genre;
     private BigDecimal price;
-    private LocalDate dataEdition;
+    private LocalDate dateEdition;
     @ManyToOne
     private Author author;
 }
