@@ -27,4 +27,10 @@ public class AuthorService {
     public void Delete(Integer id) {
         authorRepo.deleteById(id);
     }
+
+    public Author Update(Integer id, Author author) {
+        Author authorEntity = authorRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Author with id " + id + " doesn't exist"));
+        return authorRepo.save(authorEntity);
+    }
 }

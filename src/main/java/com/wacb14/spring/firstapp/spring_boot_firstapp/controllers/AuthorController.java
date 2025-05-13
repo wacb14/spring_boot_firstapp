@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/authors")
@@ -39,4 +40,17 @@ public class AuthorController {
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Author> Update(@PathVariable Integer id, @RequestBody Author author) {
+        Optional<Author> authorEntity = authorService.FindById(id);
+        if (authorEntity.isPresent()) {
+            Author authorUpdated = authorEntity.get();
+            authorUpdated.setName(author.getName());
+            authorUpdated.setLastName(author.getLastName());
+            authorUpdated.setPhone(author.getPhone());
+            return new ResponseEntity<>(authorService.Save(authorUpdated), HttpStatus.OK);
+        } else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    }
 }

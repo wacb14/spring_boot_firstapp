@@ -27,4 +27,11 @@ public class BookService {
     public void Delete(Integer id) {
         bookRepo.deleteById(id);
     }
+
+    public Book Update(Integer id, Book book) {
+        Book bookEntity = bookRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Book with id " + id + " doesn't exist"));
+        return bookRepo.save(bookEntity);
+
+    }
 }

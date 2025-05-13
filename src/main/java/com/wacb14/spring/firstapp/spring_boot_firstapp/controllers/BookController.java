@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.wacb14.spring.firstapp.spring_boot_firstapp.models.Book;
 import com.wacb14.spring.firstapp.spring_boot_firstapp.services.BookService;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/books")
@@ -36,6 +37,22 @@ public class BookController {
     public ResponseEntity<Book> Save(@RequestBody Book book) {
         Book saved = bookService.Save(book);
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Book> Update(@PathVariable Integer id, @RequestBody Book book) {
+        Optional<Book> bookEntity = bookService.FindById(id);
+        if (bookEntity.isPresent()) {
+            Book bookUpdated = bookEntity.get();
+            bookUpdated.setTitle(book.getTitle());
+            bookUpdated.setEditorial(book.getEditorial());
+            bookUpdated.setGenre(book.getGenre());
+            bookUpdated.setPrice(book.getPrice());
+            bookUpdated.setDateEdition(book.getDateEdition());
+            bookUpdated.setAuthor(book.getAuthor());
+            return new ResponseEntity<>(bookService.Save(bookUpdated), HttpStatus.OK);
+        } else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }

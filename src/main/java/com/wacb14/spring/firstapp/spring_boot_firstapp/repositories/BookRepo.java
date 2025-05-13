@@ -7,5 +7,5 @@ import com.wacb14.spring.firstapp.spring_boot_firstapp.models.Book;
 
 @Repository
 public interface BookRepo extends JpaRepository<Book, Integer> {
-    
+
 }
