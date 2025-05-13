@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.wacb14.spring.firstapp.spring_boot_firstapp.models.Author;
 import com.wacb14.spring.firstapp.spring_boot_firstapp.services.AuthorService;
+
+import jakarta.persistence.EntityNotFoundException;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,6 +55,16 @@ public class AuthorController {
             return new ResponseEntity<>(authorService.Save(authorUpdated), HttpStatus.OK);
         } else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> Delete(@PathVariable Integer id) {
+        try {
+            authorService.Delete(id);
+            return ResponseEntity.noContent().build();
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
 
     }
 }
