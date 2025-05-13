@@ -53,7 +53,6 @@ public class BookController {
             bookUpdated.setGenre(book.getGenre());
             bookUpdated.setPrice(book.getPrice());
             bookUpdated.setDateEdition(book.getDateEdition());
-            bookUpdated.setAuthor(book.getAuthor());
             return new ResponseEntity<>(bookService.Save(bookUpdated), HttpStatus.OK);
         } else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
